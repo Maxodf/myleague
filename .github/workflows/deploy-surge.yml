@@ -1,0 +1,43 @@
+name: Deploy to Surge
+
+# déclenche l'action automatiquement après un push sur la branch main
+on:
+  push:
+    branches:
+      - master
+      #- dev
+
+# définition des permissions et autorisation de permettre le déploiement sur GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# autorise un déploiement à la fois
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  buildNdeploy:
+    environment: production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        # working-directory: projet/frontend/LocalExpress
+    steps:
+      # fetch du code
+      - name: Checkout
+        uses: actions/checkout@v3
+      # installation des dependances
+      - name: Install Dependencies
+        run: npm install
+      # build
+      - name: Build
+        run: npm run build
+      # deploy to surge
+      - name: Deploy to Surge
+        run: |
+         npm install -g surge
+         surge ./dist --domain ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
