@@ -58,8 +58,15 @@ const Ranking_footus = ({ urls }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = urls[selectedTable].replace(/^https:\/\/www\.fffa\.org/, '/api'); // Utiliser le chemin du proxy
-        const response = await fetch(url); // Utiliser le chemin du proxy
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const url = proxyUrl + urls[selectedTable]; // Préfixer avec le proxy CORS Anywhere
+        
+        const response = await fetch(url, {
+          headers: {
+            'Origin': 'https://myleague.surge.sh',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
         if (response.ok) {
           const result = await response.json();
           setData(result);
