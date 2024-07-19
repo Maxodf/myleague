@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Loader from './loader';
+import { fetchData } from '../api/apiService';
 
-// Composant Table
 const Table = ({ id, data }) => {
   return (
     <div>
@@ -48,39 +48,25 @@ const Table = ({ id, data }) => {
   );
 };
 
-// Composant Ranking_footus
 const Ranking_footus = ({ urls }) => {
   const [selectedTable, setSelectedTable] = useState(Object.keys(urls)[0]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       setLoading(true);
       try {
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        const url = proxyUrl + urls[selectedTable]; // Préfixer avec le proxy CORS Anywhere
-        
-        const response = await fetch(url, {
-          headers: {
-            'Origin': 'https://myleague.surge.sh',
-            'X-Requested-With': 'XMLHttpRequest'
-          }
-        });
-        if (response.ok) {
-          const result = await response.json();
-          setData(result);
-        } else {
-          throw new Error('Network response was not ok.');
-        }
+        const result = await fetchData(urls[selectedTable]);
+        setData(result);
       } catch (error) {
-        console.error('Erreur lors de la récupération des données :', error);
+        // Error handling is managed within fetchData
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    loadData();
   }, [selectedTable, urls]);
 
   const handleChange = (event) => {
