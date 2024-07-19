@@ -58,9 +58,14 @@ const Ranking_footus = ({ urls }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(urls[selectedTable]);
-        const result = await response.json();
-        setData(result);
+        const url = urls[selectedTable].replace(/^https:\/\/www\.fffa\.org/, '/api'); // Utiliser le chemin du proxy
+        const response = await fetch(url); // Utiliser le chemin du proxy
+        if (response.ok) {
+          const result = await response.json();
+          setData(result);
+        } else {
+          throw new Error('Network response was not ok.');
+        }
       } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);
       } finally {
