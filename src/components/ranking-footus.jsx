@@ -58,8 +58,8 @@ const Ranking_footus = ({ urls }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = urls[selectedTable].replace(/^https:\/\/www\.fffa\.org/, '/api'); // Utiliser le chemin du proxy
-        const response = await fetch(url); // Utiliser le chemin du proxy
+        const url = urls[selectedTable]; // Utilisez l'URL absolue directement
+        const response = await fetch(url);
         if (response.ok) {
           const result = await response.json();
           setData(result);
