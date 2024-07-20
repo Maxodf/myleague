@@ -15,13 +15,13 @@ export default defineConfig(({mode}) => {
       watch: {
         usePolling: true
       },
-      proxy: {
-        '/api': {
-          target: 'https://cors-anywhere.herokuapp.com/',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      },
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://cors-anywhere.herokuapp.com/',
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ''),
+      //   },
+      // },
     }
   }
 })

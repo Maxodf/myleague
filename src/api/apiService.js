@@ -1,16 +1,17 @@
-// apiService.js
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const proxyUrl = 'https://api.allorigins.win/get?url=';
 
 export const fetchData = async (url) => {
   try {
-    const response = await fetch(proxyUrl + url, {
+    const encodedUrl = encodeURIComponent(url);
+    const response = await fetch(`${proxyUrl}${encodedUrl}`, {
       headers: {
-        'Origin': 'https://myleague.surge.sh',
         'X-Requested-With': 'XMLHttpRequest'
       }
     });
     if (response.ok) {
-      return await response.json();
+      const result = await response.json();
+      // AllOrigins wraps the response data in a "contents" field
+      return JSON.parse(result.contents);
     } else {
       throw new Error('Network response was not ok.');
     }

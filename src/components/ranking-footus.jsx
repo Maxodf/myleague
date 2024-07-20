@@ -3,6 +3,10 @@ import Loader from './loader';
 import { fetchData } from '../api/apiService';
 
 const Table = ({ id, data }) => {
+  if (!Array.isArray(data)) {
+    return <div>Erreur : Les données ne sont pas dans le format attendu.</div>;
+  }
+
   return (
     <div>
       <h2>{id}</h2>
@@ -52,15 +56,17 @@ const Ranking_footus = ({ urls }) => {
   const [selectedTable, setSelectedTable] = useState(Object.keys(urls)[0]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
+      setError(null);
       try {
         const result = await fetchData(urls[selectedTable]);
         setData(result);
       } catch (error) {
-        // Error handling is managed within fetchData
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -81,7 +87,7 @@ const Ranking_footus = ({ urls }) => {
           <option key={key} value={key}>{key}</option>
         ))}
       </select>
-      {loading ? <Loader /> : <Table id={selectedTable} data={data} />}
+      {loading ? <Loader /> : error ? <div>Erreur: {error}</div> : <Table id={selectedTable} data={data} />}
     </div>
   );
 };
