@@ -20,7 +20,6 @@ const Footus = () => {
   return (
     <div>
       <h1>Football Américain</h1>
-      <p>Ci dessous le classement des équipes de la FFFA Française!</p>
       <Ranking_footus urls={urls} />
     </div>
   );
