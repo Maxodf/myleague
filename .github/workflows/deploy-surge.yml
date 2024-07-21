@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - master
-      #- dev
+      - dev
 
 # définition des permissions et autorisation de permettre le déploiement sur GitHub Pages
 permissions:
@@ -37,6 +37,10 @@ jobs:
       # build
       - name: Build
         run: npm run build
+
+      # copier index.html en 200.html
+      - name: Create 200.html
+        run: cp build/index.html build/200.html
 
       # deploy to surge
       - name: Deploy to Surge
