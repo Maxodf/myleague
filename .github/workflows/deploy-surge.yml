@@ -40,7 +40,7 @@ jobs:
 
       # copier index.html en 200.html
       - name: Create 200.html
-        run: cp build/index.html build/200.html
+        run: cp dist/index.html dist/200.html
 
       # deploy to surge
       - name: Deploy to Surge
