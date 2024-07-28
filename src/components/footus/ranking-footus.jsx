@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Loader from './loader';
-import { fetchData } from '../api/apiService';
+import Loader from '../loader';
+import { fetchData } from '../../api/apiService';
 
 const Table = ({ id, data }) => {
   if (!Array.isArray(data)) {
@@ -87,7 +87,7 @@ const Ranking_footus = ({ urls }) => {
           <option key={key} value={key}>{key}</option>
         ))}
       </select>
-      {loading ? <Loader /> : error ? <div>Erreur: {error}</div> : <Table id={selectedTable} data={data} />}
+      {loading ? <Loader /> : error ? <div>Problème de récupération des données</div> : <Table id={selectedTable} data={data} />}
     </div>
   );
 };
