@@ -13,7 +13,7 @@ export const fetchData = async (url) => {
       // AllOrigins wraps the response data in a "contents" field
       return JSON.parse(result.contents);
     } else {
-      throw new Error('Network response was not ok.');
+      throw new Error('Impossible de charger les données :', error);
     }
   } catch (error) {
     console.error('Erreur lors de la récupération des données :', error);
