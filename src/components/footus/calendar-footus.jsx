@@ -71,7 +71,7 @@ const Calendar_footus = ({ urls }) => {
 
   return (
     <div>
-      <h1>Calendrier Football Américain</h1>
+      <h2>Calendrier Football Américain</h2>
       <select onChange={handleChange} value={selectedTable}>
         {Object.keys(urls).map(key => (
           <option key={key} value={key}>{key}</option>

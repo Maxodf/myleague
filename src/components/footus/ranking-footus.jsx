@@ -81,7 +81,7 @@ const Ranking_footus = ({ urls }) => {
 
   return (
     <div>
-      <h1>Classement Football Américain</h1>
+      <h2>Classement Football Américain</h2>
       <select onChange={handleChange} value={selectedTable}>
         {Object.keys(urls).map(key => (
           <option key={key} value={key}>{key}</option>
