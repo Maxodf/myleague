@@ -1,0 +1,79 @@
+.heroSport{
+    padding-bottom: 50px;
+    padding-top: 50px;
+    background-color: black;
+    /* margin-bottom: 50px;*/
+    border-bottom: 1px solid blueviolet;
+}
+.heroSport h1{
+    font-size: 40px;
+    margin: 0;
+}
+.heroSport h2, .heroSport span {
+    color: grey;
+    margin: 0;
+    padding: 5px;
+}
+.heroSport span{
+    font-size: 18px;
+    color: blueviolet;
+    font-style: italic;
+}
+
+.ranking h3, .calendar h3{
+    font-size: 30px;
+    margin: 0;
+    padding-bottom: 10px;
+}
+.ranking span, .calendar span{
+    font-size: 20px;
+    color: grey;
+}
+.ranking{
+    border-top: 0 !important;
+}
+.ranking, .calendar{
+    padding-top: 50px;
+    margin-bottom: 100px;
+    border-top: 1px solid white;
+}
+
+
+/* calendar table*/
+
+.calendar thead tr{
+    border-bottom: 1px solid grey !important;
+}
+.calendar table th:nth-child(2){
+    border: 1px solid gold;
+}
+.calendar table th:nth-child(5){
+    border: 1px solid blueviolet;
+}
+/* .calendar table tr td:nth-child(4){
+    border-right: 1px solid blueviolet;
+} */
+.calendar table tr td:nth-child(2){
+    border-right: 1px solid black;
+}
+.calendar table tbody td:nth-child(2) {
+    color: gold;
+    font-weight: 600;
+}
+.calendar table tbody td:nth-child(4) {
+    color: blueviolet;
+    font-weight: 600;
+}
+.calendar table tbody td:nth-child(3){
+    color: gold;
+    font-weight: 600;
+}
+.calendar table tbody td:nth-child(5){
+    color: blueviolet;
+    font-weight: 600;
+}
+
+.error{
+    /* color: red; */
+    color: blueviolet;
+}

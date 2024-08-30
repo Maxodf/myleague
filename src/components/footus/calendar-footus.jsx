@@ -9,15 +9,14 @@ const CalendarTable = ({ id, data }) => {
 
   return (
     <div>
-      <h2>{id}</h2>
       <table id={id}>
         <thead>
           <tr>
             <th>Date</th>
             <th>Équipe A</th>
             <th>Score A</th>
-            <th>Équipe B</th>
             <th>Score B</th>
+            <th>Équipe B</th>
             <th>Feuille de Match</th>
             <th>Stats Équipe A</th>
             <th>Stats Équipe B</th>
@@ -29,8 +28,8 @@ const CalendarTable = ({ id, data }) => {
               <td>{new Date(item.date).toLocaleDateString()}</td>
               <td>{item.team_a.name}</td>
               <td>{item.team_a.score}</td>
-              <td>{item.team_b.name}</td>
               <td>{item.team_b.score}</td>
+              <td>{item.team_b.name}</td>
               <td><a href={item.sheet} target="_blank" rel="noopener noreferrer">Voir</a></td>
               <td><a href={item.team_a.stats} target="_blank" rel="noopener noreferrer">Voir</a></td>
               <td><a href={item.team_b.stats} target="_blank" rel="noopener noreferrer">Voir</a></td>
@@ -70,14 +69,15 @@ const Calendar_footus = ({ urls }) => {
   };
 
   return (
-    <div>
-      <h2>Calendrier Football Américain</h2>
+    <div className='calendar'>
+      <h3>Calendrier</h3>
+      <span>Saison actuelle : 2024</span><br/><br/>
       <select onChange={handleChange} value={selectedTable}>
         {Object.keys(urls).map(key => (
           <option key={key} value={key}>{key}</option>
         ))}
       </select>
-      {loading ? <Loader /> : error ? <div>Problème de récupération des données</div> : <CalendarTable id={selectedTable} data={data} />}
+      {loading ? <Loader /> : error ? <div className='error'>Problème de récupération des données :/<br></br><br></br> <b>Rafraichissez la page</b> ou sélectionnez une autre ligue dans le sélecteur</div> : <CalendarTable id={selectedTable} data={data} />}
     </div>
   );
 };

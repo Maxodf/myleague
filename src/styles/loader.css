@@ -1,5 +1,7 @@
 .glitch {
     position: relative;
+    display: block;
+    width: fit-content;
     font-size: 25px;
     font-weight: 700;
     line-height: 1.2;

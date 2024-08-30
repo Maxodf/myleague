@@ -9,7 +9,6 @@ const Table = ({ id, data }) => {
 
   return (
     <div>
-      <h2>{id}</h2>
       <table id={id}>
         <thead>
           <tr>
@@ -80,14 +79,15 @@ const Ranking_footus = ({ urls }) => {
   };
 
   return (
-    <div>
-      <h2>Classement Football Américain</h2>
+    <div className='ranking'>
+      <h3>Classement</h3>
+      <span>Saison actuelle : 2024</span><br/><br/>
       <select onChange={handleChange} value={selectedTable}>
         {Object.keys(urls).map(key => (
           <option key={key} value={key}>{key}</option>
         ))}
       </select>
-      {loading ? <Loader /> : error ? <div>Problème de récupération des données</div> : <Table id={selectedTable} data={data} />}
+      {loading ? <Loader /> : error ? <div className='error'>Problème de récupération des données :/<br></br><br></br> <b>Rafraichissez la page</b> ou sélectionnez une autre ligue dans le sélecteur</div> : <Table id={selectedTable} data={data} />}
     </div>
   );
 };

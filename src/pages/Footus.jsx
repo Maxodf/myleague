@@ -2,6 +2,8 @@ import React from 'react';
 import Ranking_footus from '../components/footus/ranking-footus';
 import Calendar_footus from '../components/footus/calendar-footus';
 import '../styles/pages/Footus.css';
+import '../styles/theme/config.css';
+import '../styles/theme/responsive.css';
 
 const footusURL = 'https://www.fffa.org/wp-admin/admin-ajax.php?action=fffa_calendar_api_proxy&resource=matches&args[]=';
 
@@ -162,11 +164,19 @@ const urls_calendar = {
 
 const Footus = () => {
   return (
-    <div>
-      <h1>Football Américain</h1>
-      <Ranking_footus urls={urls_ranking} />
-      <Calendar_footus urls={urls_calendar} />
-    </div>
+    <>
+      <div className='heroSport'>
+        <div className='container'>
+          <h1> &gt; Football Américain</h1>
+          <h2>FFFA (Fédération française de Football Américain)</h2>
+          <span>France National / Régional</span>
+        </div>
+      </div>
+      <div className="container">
+        <Ranking_footus urls={urls_ranking} />
+        <Calendar_footus urls={urls_calendar} />
+      </div>
+    </>
   );
 };
 
