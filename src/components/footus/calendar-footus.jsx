@@ -8,7 +8,7 @@ const CalendarTable = ({ id, data }) => {
   }
 
   return (
-    <div>
+    <div className='tableau'>
       <table id={id}>
         <thead>
           <tr>

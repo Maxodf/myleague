@@ -69,11 +69,55 @@
     font-weight: 600;
 }
 .calendar table tbody td:nth-child(5){
-    color: blueviolet;
+    color: #8a2be2;
     font-weight: 600;
 }
+
+
+.tableau {
+    width: 100%;
+    overflow-x: auto;  /* Active le scroll horizontal si nécessaire */
+}
+.tableau {
+    --sb-track-color: #313131;
+    --sb-thumb-color: #242424;
+    --sb-size: 10px;
+  }
+  
+  .tableau::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+  
+  .tableau::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 1px;
+  }
+  
+  .tableau::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 1px;
+    border: 1px solid #313131;
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    .tableau {
+        scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }
+table {
+    width: 100%;
+    margin-right: 20px;
+}
+@media (max-width: 768px) {
+    table {
+      width: auto;
+    }
+}
+
 
 .error{
     /* color: red; */
     color: blueviolet;
 }
+  
