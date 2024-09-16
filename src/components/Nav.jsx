@@ -16,7 +16,7 @@ const Navbar = () => {
             <nav>
                 <div className='logo'>
                     <Link to="/" >
-                        <img src="/src/assets/logo_MyLeague-white.png" alt="" />
+                        <img src="./src/assets/logo_MyLeague-white.png" alt="" />
                     </Link>
                 </div>
                 <div className={`burger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
