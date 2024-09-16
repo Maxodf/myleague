@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/components/Navbar.css';
+import logo from './src/assets/logo_MyLeague-white.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
             <nav>
                 <div className='logo'>
                     <Link to="/" >
-                        <img src="./src/assets/logo_MyLeague-white.png" alt="" />
+                        <img src={logo} alt="Logo MyLeague" />
                     </Link>
                 </div>
                 <div className={`burger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
